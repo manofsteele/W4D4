@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+h1 {
+  font-family: 'Coda Caption', sans-serif;
+  color: blue;
+  size: 40px;
+}
+
+h2 {
+  font-family: 'Wendy One', sans-serif;
+}
+
+a {
+  background-color: chartreuse;
+  border-radius: 10px;
+}
+
+.logins {
+  display: flex;
+}
+
+label {
+  display: inline-block;
+}

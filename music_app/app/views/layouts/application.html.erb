@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MusicApp</title>
+    <title>MMMM!!!</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Coda+Caption:800" rel="stylesheet">
   </head>
 
   <body>
+    <header>
+    <h1>Multiple Methods of Music Management -- MMMM!!!</h1>
+    </header>
+    <h2><%= current_user.email if current_user %><h2>
+    <!-- <section class="logins"> -->
+    <% if logged_in? %>
+    <form action="<%= session_url %>" method="post">
+      <%= auth_token %>
+      <input type="hidden" method="_method" value="delete"/>
+      <input type="submit" value="Sign Out"/>
+    </form>
+
+    <%   else %>
+
+    <a href="<%= new_session_url %>" name="login" >Sign in</a>
+    <a href="<%= new_user_url %>" name="login" >Sign up</a>
+
+    <%  end %>
+    <!-- </section> -->
     <%= yield %>
   </body>
 </html>

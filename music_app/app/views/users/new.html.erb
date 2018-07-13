@@ -1,0 +1,12 @@
+<form action="<%= users_url %>" method="post">
+  <%= auth_token %>
+
+  Welcome to the Music app. Sign up and join below:
+  <label for="email">Email address: </label>
+  <input type="text" id="email" name="user[email]" value="">
+  <label for="password">Password: </label>
+  <input type="password" id="password" name="user[password]" value="">
+
+  <input type="submit" value="Sign Up!">
+
+</form>

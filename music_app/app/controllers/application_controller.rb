@@ -1,15 +1,14 @@
 class ApplicationController < ActionController::Base
 
-  #current_user to return the current user.
-#logged_in? to return a boolean indicating whether someone is signed in.
-#log_in_user!(user)
+  protect_from_forgery with: :exception
 
   def current_user
-    @current_user
+    @current_user ||= User.find_by(session_token: session[:session_token])
   end
 
   def logged_in?
-    @current_user.session_token == session[:session_token]
+    !!current_user
+    # current_user.session_token == session[:session_token]
   end
 
   def log_in_user!(user)
@@ -18,4 +17,8 @@ class ApplicationController < ActionController::Base
     session[:session_token] = user.session_token
   end
 
+  def logout!(user)
+    current_user.reset_session_token!
+    session[:session_token] = nil
+  end
 end
